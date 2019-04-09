@@ -33,7 +33,6 @@ class Form extends Component {
   }
 
   setMyRating(e) {
-    // eslint-disable-next-line eqeqeq
     const selectedPlayer = this.state.playerList.find((item) => item.rating == e.target.value);
     this.setState({ 
       myRating: selectedPlayer.rating,
@@ -43,7 +42,6 @@ class Form extends Component {
   }
 
   setOpponentRating(e) {
-    // eslint-disable-next-line eqeqeq
     const myOpponent = this.state.playerList.find((item) => item.rating == e.target.value);
     if(myOpponent.name!=this.state.myName){
     this.setState({ 
