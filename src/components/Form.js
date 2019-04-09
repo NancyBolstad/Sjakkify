@@ -33,11 +33,26 @@ class Form extends Component {
   }
 
   setMyRating(e) {
-    this.setState({ myRating: e.target.value });
+    // eslint-disable-next-line eqeqeq
+    const selectedPlayer = this.state.playerList.find((item) => item.rating == e.target.value);
+    this.setState({ 
+      myRating: selectedPlayer.rating,
+      myName:selectedPlayer.name
+    });
+    console.log(selectedPlayer.name);
   }
 
   setOpponentRating(e) {
-    this.setState({ opponentRating: e.target.value });
+    // eslint-disable-next-line eqeqeq
+    const myOpponent = this.state.playerList.find((item) => item.rating == e.target.value);
+    if(myOpponent.name!=this.state.myName){
+    this.setState({ 
+      opponentRating: myOpponent.rating,
+      opponentName: myOpponent.name
+    });}else{
+      alert("Wrong selection")
+      return
+    }
   }
 
   setGameResult(e) {
@@ -70,7 +85,6 @@ class Form extends Component {
   showNewRating(){
       const rating = parseInt(this.state.rating);
       if(rating>0 && !this.state.error){
-      console.log(typeof rating);
       return `Din nye rating: ${rating}`;
       }
   }
